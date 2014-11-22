@@ -23,12 +23,12 @@ curl -\# -L -o "$appsupport_dir"/trash "https://github.com/w0lfschild/classic_Yo
 chmod 755 "$appsupport_dir"/trash
 
 # Check for backup
-if [[  -e /System/Library/CoreServices/.CoreTypes.bundle.old ]]; then
+if [[ ! -e /System/Library/CoreServices/.CoreTypes.bundle.old ]]; then
 	if [[ ! -e "$appsupport_dir"/icons ]]; then mkdir -p "$appsupport_dir"/icons; fi
 	
 	# Backup existing CoreTypes
-	#echo -e "Backing up existing CoreTypes to \"/System/Library/CoreServices/.CoreTypes.bundle.old\""
-	#sudo cp -r /System/Library/CoreServices/CoreTypes.bundle  /System/Library/CoreServices/.CoreTypes.bundle.old
+	echo -e "Backing up existing CoreTypes to \"/System/Library/CoreServices/.CoreTypes.bundle.old\""
+	sudo cp -r /System/Library/CoreServices/CoreTypes.bundle  /System/Library/CoreServices/.CoreTypes.bundle.old
 	
 	# Get icons
 	if [[ ! -e "$appsupport_dir"/icns.zip ]]; then
