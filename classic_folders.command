@@ -19,7 +19,7 @@ appsupport_dir="$HOME"/Library/Application\ Support/ycf
 sudo -v
 
 # Get trash script
-curl -\# -L -o "$appsupport_dir"/trash "https://raw.githubusercontent.com/w0lfschild/classic_Yose/master/trash"
+curl -\# -L -o "$appsupport_dir"/trash "https://github.com/w0lfschild/classic_Yose/blob/master/trash?raw=true"
 chmod 755 "$appsupport_dir"/trash
 
 # Check for backup
@@ -54,7 +54,7 @@ fi
 # Clear icon caches
 sudo find /private/var/folders/ -name com.apple.dock.iconcache -exec rm {} \;
 sudo find /private/var/folders/ -name com.apple.iconservices -exec rm -rf {} \;
-"$appsupport_dir"/trash /Library/Caches/com.apple.iconservices.store
+sudo "$appsupport_dir"/trash /Library/Caches/com.apple.iconservices.store
 
 # Prompt for reboot
 echo -e "Done!\n\
