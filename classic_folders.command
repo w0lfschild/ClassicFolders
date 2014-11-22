@@ -15,31 +15,31 @@ This script requires that you enter your password to continue.\n\
 You won't see your password as you type it.\n\
 Press return once you've finished typing your password."
 
-plist="$HOME"/Library/Preferences/org.w0lf.cy.plist
-scriptDirectory=$(cd "${0%/*}" && echo $PWD)
 appsupport_dir="$HOME"/Library/Application\ Support/ycf
-dl_url="https://raw.githubusercontent.com/w0lfschild/classic_Yose/master/icons.zip"
-#old_icons="$scriptDirectory"/icons
 sudo -v
 
+# Get trash script
+curl -\# -L -o "$appsupport_dir"/trash "https://raw.githubusercontent.com/w0lfschild/classic_Yose/master/trash"
+chmod 755 "$appsupport_dir"/trash
+
 # Check for backup
-if [[ ! -e /System/Library/CoreServices/.CoreTypes.bundle.old ]]; then
-	if [[ ! -e "$appsupport_dir" ]]; then mkdir -p "$appsupport_dir"; fi
+if [[  -e /System/Library/CoreServices/.CoreTypes.bundle.old ]]; then
+	if [[ ! -e "$appsupport_dir"/icons ]]; then mkdir -p "$appsupport_dir"/icons; fi
 	
 	# Backup existing CoreTypes
-	echo -e "Backing up existing CoreTypes to \"/System/Library/CoreServices/.CoreTypes.bundle.old\""
-	sudo cp -r /System/Library/CoreServices/CoreTypes.bundle  /System/Library/CoreServices/.CoreTypes.bundle.old
+	#echo -e "Backing up existing CoreTypes to \"/System/Library/CoreServices/.CoreTypes.bundle.old\""
+	#sudo cp -r /System/Library/CoreServices/CoreTypes.bundle  /System/Library/CoreServices/.CoreTypes.bundle.old
 	
 	# Get icons
-	echo -e "Fetching icons"
-	curl -\# -L -o "$appsupport_dir"/icns.zip "$dl_url"
-	unzip "$appsupport_dir"/icns.zip
-	rm "$appsupport_dir"/incs.zip
+	if [[ ! -e "$appsupport_dir"/icns.zip ]]; then
+		echo -e "Fetching icons"
+		curl -\# -L -o "$appsupport_dir"/icns.zip "https://raw.githubusercontent.com/w0lfschild/classic_Yose/master/icons.zip"
+		unzip "$appsupport_dir"/icns.zip -d "$appsupport_dir"/icons
+	fi
 	
 	# Moving icons
 	echo -e "Moving icons into place"
 	sudo cp -rf "$appsupport_dir"/icons /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/
-	#sudo cp -rf "$old_icons"/ /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/
 else
 	echo -e "Backup Detected!\nWould you like to restore from it now? (y/n): "
 	read res_me
@@ -54,8 +54,7 @@ fi
 # Clear icon caches
 sudo find /private/var/folders/ -name com.apple.dock.iconcache -exec rm {} \;
 sudo find /private/var/folders/ -name com.apple.iconservices -exec rm -rf {} \;
-sudo "$scriptDirectory"/trash /Library/Caches/com.apple.iconservices.store
-#sudo mv /Library/Caches/com.apple.iconservices.store com.apple.ic
+"$appsupport_dir"/trash /Library/Caches/com.apple.iconservices.store
 
 # Prompt for reboot
 echo -e "Done!\n\
