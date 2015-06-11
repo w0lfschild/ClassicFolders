@@ -6,7 +6,7 @@ Submit issues [here](https://github.com/w0lfschild/classic_Yose/issues/new).
 ![Preview](example.png)
 
 ### Information:
-**Note**: I did not create the icons. 
+**Note**: I did not create the icons.    
 **Note**: This may break in the future. 
 
 Currently confirmed working on OSX:    
