@@ -1,7 +1,7 @@
 # Classic Folders
 This script replaces OSX folder icons with the ones from Mavericks.
 
-Submit issues [here](https://github.com/w0lfschild/DarkBoot/issues/new). 
+Submit issues [here](https://github.com/w0lfschild/classic_Yose/issues/new). 
 
 ![Preview](example.png)
 
