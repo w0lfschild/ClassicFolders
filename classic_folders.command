@@ -2,8 +2,8 @@
 
 # -- Information --
 # Maintained By : Wolfgang Baird
-# Version : 1.0.1
-# Updated : Nov / 22 / 2014
+# Version : 1.0.2
+# Updated : Jun / 10 / 2015
 # Icons : Apple Inc.
 
 clear; echo -e "\
@@ -39,7 +39,7 @@ if [[ ! -e /System/Library/CoreServices/.CoreTypes.bundle.old ]]; then
 	
 	# Moving icons
 	echo -e "Moving icons into place"
-	sudo cp -rf "$appsupport_dir"/icons /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/
+	sudo cp -rf "$appsupport_dir"/icons/ /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/
 else
 	echo -e "Backup Detected!\nWould you like to restore from it now? (y/n): "
 	read res_me
