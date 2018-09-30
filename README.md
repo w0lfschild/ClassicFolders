@@ -18,7 +18,7 @@ Download and run classic_folders.command then restart.
 1. Download the latest release here : https://github.com/w0lfschild/classic_Yose/releases/latest
 2. Unzip the download
 3. Open classic_folders.command
-4. Follow instrutions printed to terminal window
+4. Follow instructions printed to terminal window
 
 ### License:
 Pretty much the BSD license, just don't repackage it and call it your own please!
